@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - URL Shortener</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>URL Shortener Dashboard</h1>
+  <button id="logoutBtn">Logout</button>
+
+  <div class="section">
+    <h2>Create Short URL</h2>
+    <input type="url" id="originalUrl" placeholder="Enter URL to shorten" />
+    <input type="text" id="prefix" placeholder="Optional short prefix" />
+    <input type="number" id="duration" placeholder="Duration in minutes (default 10)" />
+    <button id="shortenBtn">Shorten</button>
+    <div id="result"></div>
+  </div>
+
+  <div class="section">
+    <h2>My URLs</h2>
+    <div id="urlsList"></div>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    const token = localStorage.getItem("token");
+    if(!token) window.location.href = "index.html";
+
+    const logoutBtn = document.getElementById("logoutBtn");
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      window.location.href = "index.html";
+    });
+
+    // Your previous JS functions for creating, fetching, and deleting URLs
+    createShortUrl = async () => { /* ... */ }
+    fetchMyUrls = async () => { /* ... */ }
+    deleteUrl = async (shortId) => { /* ... */ }
+
+    document.getElementById("shortenBtn").addEventListener("click", createShortUrl);
+
+    fetchMyUrls();
+  </script>
+</body>
+</html>

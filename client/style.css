@@ -1,0 +1,25 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+input, button {
+  padding: 8px;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+#urlsList {
+  margin-top: 15px;
+}
+
+.url-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}

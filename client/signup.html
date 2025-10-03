@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - URL Shortener</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Sign Up</h1>
+  <input type="text" id="username" placeholder="Username" />
+  <input type="email" id="email" placeholder="Email" />
+  <input type="password" id="password" placeholder="Password" />
+  <button id="signupBtn">Sign Up</button>
+  <p>Already have an account? <a href="index.html">Login</a></p>
+
+  <script src="main.js"></script>
+  <script>
+    document.getElementById("signupBtn").addEventListener("click", async () => {
+      const username = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const res = await fetch("http://localhost:8080/api/auth/signup", {
+        method:"POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({ username, email, password })
+      });
+      const data = await res.json();
+      if(data.message){
+        alert(data.message);
+        window.location.href = "index.html";
+      } else {
+        alert(data.error);
+      }
+    });
+  </script>
+</body>
+</html>

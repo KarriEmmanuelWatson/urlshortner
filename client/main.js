@@ -189,7 +189,7 @@ async function fetchMyUrls() {
     if (!Array.isArray(urls)) return;
 
     urls.forEach((u) => {
-      const shortLink = `${window.location.origin}/api/${u.shortId}`;
+      const shortLink = `http://localhost:${8080}/api/${u.shortId}`;
       const div = document.createElement("div");
       div.className = "url-item";
       div.innerHTML = `
